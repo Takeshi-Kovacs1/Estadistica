@@ -1,0 +1,37 @@
+# Teoría
+1. b)
+2. a)
+3. Primera forma normal
+4. Los ods hacen filtros pero Having lo hace sobre grupos después del Grop by
+5. c)
+#####################################################################################################################################SQL Práctica
+1.```
+SELECT
+	nombre_materia,
+	AVG(calificacion) AS prom_calificacion
+FROM Calificaciones
+WHERE calificacion IS NOT NULL
+GROUP BY nombre_materia
+ORDER BY prom_calificacion DESC;
+```
+2.```
+SELECT
+	nombre,
+	apellido,
+	nombre_materia,
+	calificacion
+FROM alumnos AS a
+	INNER JOIN calificaciones AS c ON a.expediente = c.expediente
+WHERE calificacion IS NOT NULL
+ORDER BY apellido ASC```
+3.
+```
+SELECT
+	nombre,
+	apellido,
+	nombre_materia,
+	MAX(calificacion) AS calificacion_max
+FROM alumnos AS a
+	INNER JOIN calificaciones AS c ON a.expediente = c.expediente
+WHERE calificacion IS NOT NULL
+GROUP BY nombre, apellido```
